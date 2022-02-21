@@ -8,4 +8,8 @@ void main(List<String> args) {
   print(11 * 2);
   // Division
   print(22 / 2);
+  // Decimal numbers
+  print(22 / 7);
+  // truncating division operator
+  print(22 ~/ 7);
 }
