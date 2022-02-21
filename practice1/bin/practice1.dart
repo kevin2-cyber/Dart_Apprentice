@@ -1,3 +1,6 @@
+import 'dart:math';
+
+
 void main(List<String> args) {
   print('Hello, Dart Apprentice Reader!');
   // Addition
@@ -15,4 +18,10 @@ void main(List<String> args) {
   // Euclidean modulo
   print(28 % 10);
   print(((8000 / (5 * 10)) - 32) ~/ (29 % 5));
+  // Maths functions
+  print(sin(45 * pi / 180));
+  print(cos(135 * pi / 180));
+  print(max(sqrt(2), pi / 2));
+  print(sin(45));
+  print(1 / sqrt(2));
 }
