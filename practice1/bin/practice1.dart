@@ -12,4 +12,7 @@ void main(List<String> args) {
   print(22 / 7);
   // truncating division operator
   print(22 ~/ 7);
+  // Euclidean modulo
+  print(28 % 10);
+  print(((8000 / (5 * 10)) - 32) ~/ (29 % 5));
 }
