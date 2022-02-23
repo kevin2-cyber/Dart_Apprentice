@@ -1,7 +1,7 @@
 void main(List<String> arguments) {
   /// numbers
   // integers
-  int age = 10;
+  /*int age = 10;
   age += 15;
   print(age.isOdd);
   print(age.isEven);
@@ -14,5 +14,13 @@ void main(List<String> arguments) {
   const myConst = 10;
   print(myConst.runtimeType);
   final hoursSinceMidnight = DateTime.now();
-  print(hoursSinceMidnight);
+  print(hoursSinceMidnight);*/
+   const myAge = 19;
+   const bestFriendAge = 17;
+   double averageAge;
+   averageAge = ((myAge + bestFriendAge) / 2);
+   print(averageAge);
+   const testNumber = 9;
+   const evenOdd = testNumber % 2;
+   print(evenOdd);
 }
