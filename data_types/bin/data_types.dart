@@ -1,6 +1,6 @@
 void main(List<String> arguments) {
   /// numbers
-  // integers
+  // integers and floating-point numbers
   /*int age = 10;
   age += 15;
   print(age.isOdd);
@@ -15,8 +15,8 @@ void main(List<String> arguments) {
   print(myConst.runtimeType);
   final hoursSinceMidnight = DateTime.now();
   print(hoursSinceMidnight);*/
+  // mini exercise one
    /*
-   // mini exercise one 
    const myAge = 19;
    const bestFriendAge = 17;
    double averageAge;
@@ -25,4 +25,16 @@ void main(List<String> arguments) {
    const testNumber = 9;
    const evenOdd = testNumber % 2;
    print(evenOdd);*/
+   /// Increment and decrement
+   var incrementCounter = 0;
+   incrementCounter += 1; // adds one to the current value and assigns the value back to the variable
+   print(incrementCounter);
+   var decrementCounter = 3;
+   decrementCounter -= 1; // subtracts one from the current value and assigns the value back to the variable
+   print(decrementCounter);
+   double myValue = 10;
+   myValue *= 3;
+   print(myValue);
+   myValue /= 2;
+   print(myValue);
 }
