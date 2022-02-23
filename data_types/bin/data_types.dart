@@ -44,5 +44,8 @@ void main(List<String> arguments) {
    dogs++;
    print(dogs);
    // Challenge 2
-   
+   var age = 16;
+   print(age);
+   age = 30;
+   print(age);
 }
