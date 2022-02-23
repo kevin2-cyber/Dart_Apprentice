@@ -57,4 +57,10 @@ void main(List<String> arguments) {
    print(answer2);
    const answer3 = (x * 100) + (y / 10);
    print(answer3);
+   // Challenge 4
+   const rating1 = 10;
+   const rating2 = 12;
+   const rating3 = 14;
+   const averageRating = (rating1 + rating2 + rating3) / 3;
+   print(averageRating);
 }
