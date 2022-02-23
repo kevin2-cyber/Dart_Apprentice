@@ -15,6 +15,8 @@ void main(List<String> arguments) {
   print(myConst.runtimeType);
   final hoursSinceMidnight = DateTime.now();
   print(hoursSinceMidnight);*/
+   /*
+   // mini exercise one 
    const myAge = 19;
    const bestFriendAge = 17;
    double averageAge;
@@ -22,5 +24,5 @@ void main(List<String> arguments) {
    print(averageAge);
    const testNumber = 9;
    const evenOdd = testNumber % 2;
-   print(evenOdd);
+   print(evenOdd);*/
 }
