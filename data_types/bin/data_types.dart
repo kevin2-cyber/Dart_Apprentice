@@ -26,7 +26,7 @@ void main(List<String> arguments) {
    const evenOdd = testNumber % 2;
    print(evenOdd);*/
    /// Increment and decrement
-   var incrementCounter = 0;
+   /*var incrementCounter = 0;
    incrementCounter += 1; // adds one to the current value and assigns the value back to the variable
    print(incrementCounter);
    var decrementCounter = 3;
@@ -36,5 +36,13 @@ void main(List<String> arguments) {
    myValue *= 3;
    print(myValue);
    myValue /= 2;
-   print(myValue);
+   print(myValue);*/
+   /// Assignment one
+   // Challenge 1
+   const myAge = 19;
+   int dogs = 12;
+   dogs++;
+   print(dogs);
+   // Challenge 2
+   
 }
