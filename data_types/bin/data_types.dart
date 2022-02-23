@@ -1,3 +1,5 @@
+import 'dart:math';
+
 void main(List<String> arguments) {
   /// numbers
   // integers and floating-point numbers
@@ -63,4 +65,13 @@ void main(List<String> arguments) {
    const rating3 = 14;
    const averageRating = (rating1 + rating2 + rating3) / 3;
    print(averageRating);
+   // Challenge 5
+   String quad = 'ax2 + bx + c';
+   double a = 20;
+   double b = 10;
+   double c = 5;
+   double root1 = (-(b) + sqrt((b * b) - (4 * a * c))) / (2 * a);
+   double root2 = (-(b) - sqrt((b * b) - (4 * a * c))) / (2 * a);
+   print(root1);
+   print(root2);
 }
