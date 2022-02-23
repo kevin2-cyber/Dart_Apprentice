@@ -10,4 +10,9 @@ void main(List<String> arguments) {
   num car = 20;
   car = 20.0;
   print(car.runtimeType);
+  /// Using constants[Final amd const keyword]
+  const myConst = 10;
+  print(myConst.runtimeType);
+  final hoursSinceMidnight = DateTime.now();
+  print(hoursSinceMidnight);
 }
