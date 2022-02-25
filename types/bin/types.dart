@@ -57,5 +57,11 @@ void main(List<String> arguments) {
   message.write(' my name is ');
   message.write('Ray');
   print(message.toString());
-
+  // Interpolation
+  const name = 'Ray';
+  const  introduction = 'Hello my name is $name';
+  print(introduction);
+  const oneThird = 1 / 3;
+  final sentence = 'One third is ${oneThird.toStringAsFixed(3)}';
+  print(sentence);
 }
