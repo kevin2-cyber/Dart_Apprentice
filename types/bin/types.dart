@@ -14,4 +14,12 @@ void main(List<String> arguments) {
   var decimal = 12.5;
   integer = decimal.toInt();
   print(integer.toString().runtimeType);
+  // Operators with mixed types
+  const hourlyRate = 19.5;
+  const hoursWorked = 10;
+  final totalCost = hourlyRate * hoursWorked;
+  print(totalCost.toInt().runtimeType);
+  // Ensuring a certain type
+  final wantADouble = 3.toDouble();
+  print(wantADouble);
 }
