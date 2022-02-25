@@ -13,5 +13,5 @@ void main(List<String> arguments) {
   var integer = 100;
   var decimal = 12.5;
   integer = decimal.toInt();
-  print(integer.toString());
+  print(integer.toString().runtimeType);
 }
