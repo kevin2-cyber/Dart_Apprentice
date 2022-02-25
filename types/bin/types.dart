@@ -9,5 +9,9 @@ void main(List<String> arguments) {
   print(myNumber.runtimeType);
   print(myNumber is double);
   print(myInteger is double);
-
+  // Type conversion
+  var integer = 100;
+  var decimal = 12.5;
+  integer = decimal.toInt();
+  print(integer.toString());
 }
