@@ -65,10 +65,18 @@ void main(List<String> arguments) {
   final sentence = 'One third is ${oneThird.toStringAsFixed(3)}';
   print(sentence);
   print('I \u2764 Dart\u0021');*/
-  // Mini-exercises
+  /*// Mini-exercises
   const firstName = 'Kelvin ';
   const lastName = 'Eduful';
   const fullName = firstName + lastName;
   const myDetails = 'Hello, my name is $fullName';
-  print(myDetails);
+  print(myDetails);*/
+  // Challenge 1
+  final studentGrade;
+  const attendance = 20 /100;
+  const homeWork = 30 /100;
+  const exam = 50 / 100;
+
+  studentGrade = ((attendance * 90) + (homeWork * 80) + (exam * 94));
+  print(studentGrade);
 }
