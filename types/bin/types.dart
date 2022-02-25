@@ -1,4 +1,4 @@
-import 'package:characters/characters.dart';
+// import 'package:characters/characters.dart';
 void main(List<String> arguments) {
   /*/// Type inference and type annotation.
   // type annotation refers to declaring a variable with it's type.
@@ -34,7 +34,7 @@ void main(List<String> arguments) {
   const age2 = 21;
   const averageAge = (age1 + age2) / 2;
   print(averageAge.toInt().isEven.runtimeType); // averageAge is a double because it's dividing and the result will be a floating-point number.*/
-  /// Strings
+  /*/// Strings
   var greeting = 'Hello, dart!';
   print(greeting.toString().toUpperCase().codeUnits.reversed.runtimeType);
   greeting = 'Hello, Flutter!';
@@ -64,5 +64,11 @@ void main(List<String> arguments) {
   const oneThird = 1 / 3;
   final sentence = 'One third is ${oneThird.toStringAsFixed(3)}';
   print(sentence);
-  print('I \u2764 Dart\u0021');
+  print('I \u2764 Dart\u0021');*/
+  // Mini-exercises
+  const firstName = 'Kelvin ';
+  const lastName = 'Eduful';
+  const fullName = firstName + lastName;
+  const myDetails = 'Hello, my name is $fullName';
+  print(myDetails);
 }
