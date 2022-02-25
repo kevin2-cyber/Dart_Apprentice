@@ -71,12 +71,15 @@ void main(List<String> arguments) {
   const fullName = firstName + lastName;
   const myDetails = 'Hello, my name is $fullName';
   print(myDetails);*/
-  // Challenge 1
+  /*// Challenge 1
   final studentGrade;
   const attendance = 20 /100;
   const homeWork = 30 /100;
   const exam = 50 / 100;
 
   studentGrade = ((attendance * 90) + (homeWork * 80) + (exam * 94));
-  print(studentGrade);
+  print(studentGrade);*/
+  // Challenge 2
+  const twoCountries = '🇹🇩🇷🇴';
+  print(twoCountries.runes);
 }
