@@ -64,4 +64,5 @@ void main(List<String> arguments) {
   const oneThird = 1 / 3;
   final sentence = 'One third is ${oneThird.toStringAsFixed(3)}';
   print(sentence);
+  print('I \u2764 Dart\u0021');
 }
