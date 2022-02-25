@@ -1,5 +1,5 @@
 void main(List<String> arguments) {
-  /// Type inference and type annotation.
+  /*/// Type inference and type annotation.
   // type annotation refers to declaring a variable with it's type.
   // type inference refers to declaring a variable with a constant or var keyword but it's inferred at runtime.
   final myInteger = 10;
@@ -27,5 +27,10 @@ void main(List<String> arguments) {
   final someInt = someNumber as int;
   final someDouble =  someNumber.toDouble();
   print(someInt.isEven);
-  print(someDouble);
+  print(someDouble);*/
+  // Mini exercise 
+  const age1 = 42;
+  const age2 = 21;
+  const averageAge = (age1 + age2) / 2;
+  print(averageAge.toInt().isEven.runtimeType); // averageAge is a double because it's dividing and the result will be a floating-point number.
 }
