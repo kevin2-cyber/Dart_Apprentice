@@ -28,9 +28,12 @@ void main(List<String> arguments) {
   final someDouble =  someNumber.toDouble();
   print(someInt.isEven);
   print(someDouble);*/
-  // Mini exercise 
+ /* // Mini exercise
   const age1 = 42;
   const age2 = 21;
   const averageAge = (age1 + age2) / 2;
-  print(averageAge.toInt().isEven.runtimeType); // averageAge is a double because it's dividing and the result will be a floating-point number.
+  print(averageAge.toInt().isEven.runtimeType); // averageAge is a double because it's dividing and the result will be a floating-point number.*/
+  /// Strings
+  var greeting = 'Hello, dart!';
+  print(greeting.toString().toUpperCase().codeUnits.reversed.runtimeType);
 }
