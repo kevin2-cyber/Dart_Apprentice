@@ -82,9 +82,14 @@ void main(List<String> arguments) {
   /*// Challenge 2
   const twoCountries = '🇹🇩🇷🇴';
   print(twoCountries.runes);*/
-  // Challenge 3
+  /*// Challenge 3
   const vote = 'Thumbs up! 👍🏿';
   print(vote.codeUnits.length); // code units
   print(vote.runes.length); // Unicode code points
-  print(vote.characters.length); // Unicode grapheme clusters
+  print(vote.characters.length); // Unicode grapheme clusters*/
+  // Challenge 6
+  const number = 10;
+  const multiplier = 5;
+  final summary = '$number \u00D7 $multiplier = ${number * multiplier}';
+  print(summary);
 }
