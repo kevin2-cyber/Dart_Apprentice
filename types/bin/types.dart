@@ -51,4 +51,11 @@ void main(List<String> arguments) {
   print(family.codeUnits.length);
   print(family.runes.length);
   print(family.characters.length);
+  // Concatenation
+  final message = StringBuffer();
+  message.write('Hello');
+  message.write(' my name is ');
+  message.write('Ray');
+  print(message.toString());
+
 }
