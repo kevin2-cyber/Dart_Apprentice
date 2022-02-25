@@ -1,3 +1,4 @@
+import 'package:characters/characters.dart';
 void main(List<String> arguments) {
   /*/// Type inference and type annotation.
   // type annotation refers to declaring a variable with it's type.
@@ -36,4 +37,18 @@ void main(List<String> arguments) {
   /// Strings
   var greeting = 'Hello, dart!';
   print(greeting.toString().toUpperCase().codeUnits.reversed.runtimeType);
+  greeting = 'Hello, Flutter!';
+  print(greeting.codeUnits.reversed);
+  // Unicode's
+  const dart = '🎯';
+  print(dart.runes);
+  print(dart.codeUnits);
+  const flag = '🇲🇳';
+  print(flag.runes);
+  const family = '👨‍👩‍👧‍👦';
+  print(family.runes);
+  print(family.length);
+  print(family.codeUnits.length);
+  print(family.runes.length);
+  print(family.characters.length);
 }

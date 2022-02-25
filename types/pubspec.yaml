@@ -7,8 +7,10 @@ environment:
   sdk: '>=2.17.0-105.0.dev <3.0.0'
 
 
-# dependencies:
-#   path: ^1.8.0
+dependencies:
+   path: ^1.8.0
+   characters: ^1.2.0
 
 dev_dependencies:
   lints: ^1.0.0
+
