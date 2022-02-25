@@ -1,4 +1,4 @@
-// import 'package:characters/characters.dart';
+import 'package:characters/characters.dart';
 void main(List<String> arguments) {
   /*/// Type inference and type annotation.
   // type annotation refers to declaring a variable with it's type.
@@ -79,7 +79,12 @@ void main(List<String> arguments) {
 
   studentGrade = ((attendance * 90) + (homeWork * 80) + (exam * 94));
   print(studentGrade);*/
-  // Challenge 2
+  /*// Challenge 2
   const twoCountries = '🇹🇩🇷🇴';
-  print(twoCountries.runes);
+  print(twoCountries.runes);*/
+  // Challenge 3
+  const vote = 'Thumbs up! 👍🏿';
+  print(vote.codeUnits.length); // code units
+  print(vote.runes.length); // Unicode code points
+  print(vote.characters.length); // Unicode grapheme clusters
 }
