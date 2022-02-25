@@ -22,4 +22,10 @@ void main(List<String> arguments) {
   // Ensuring a certain type
   final wantADouble = 3.toDouble();
   print(wantADouble);
+  // Casting Down
+  num someNumber = 3;
+  final someInt = someNumber as int;
+  final someDouble =  someNumber.toDouble();
+  print(someInt.isEven);
+  print(someDouble);
 }
