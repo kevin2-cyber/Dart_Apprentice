@@ -32,7 +32,8 @@ class _RecipeListState extends State<RecipeList> {
   @override
   void initState() {
     super.initState();
-    // TODO: Call getPreviousSearches
+    // Call getPreviousSearches
+    getPreviousSearches();
     searchTextController = TextEditingController(text: '');
     _scrollController
       .addListener(() {
