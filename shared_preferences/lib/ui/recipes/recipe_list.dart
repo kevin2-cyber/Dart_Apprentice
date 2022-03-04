@@ -105,7 +105,16 @@ class _RecipeListState extends State<RecipeList> {
         child: Row(
           children: [
             // Replace
-            const Icon(Icons.search),
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: (){
+                startSearch(searchTextController.text);
+                final currentFocus = FocusScope.of(context);
+                if(!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
+                }
+              },
+            ),
             const SizedBox(
               width: 6.0,
             ),
