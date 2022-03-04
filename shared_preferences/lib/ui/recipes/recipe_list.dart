@@ -67,6 +67,17 @@ class _RecipeListState extends State<RecipeList> {
     prefs.setStringList(prefSearchKey, previousSearches);
   }
 
+  void getPreviousSearches() async {
+    final prefs = await SharedPreferences.getInstance();
+    if(prefs.containsKey(prefSearchKey)) {
+      final searches = prefs.getStringList(prefSearchKey);
+      if(searches != null) {
+        previousSearches = searches;
+      }  else {
+        previousSearches = <String>[];
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
