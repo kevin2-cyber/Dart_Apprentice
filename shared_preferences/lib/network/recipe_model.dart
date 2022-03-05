@@ -25,6 +25,7 @@ class APIRecipeQuery {
 });
 }
 //Add @JsonSerializable() class APIHits
+@JsonSerializable()
 class APIHits {
   APIRecipe recipe;
 
@@ -34,5 +35,42 @@ class APIHits {
   factory APIHits.fromJson(Map<String, dynamic> json) => _$APIHitsFromJson(json);
   Map<String, dynamic> toJson() => _$APIHitsToJson(this);
 }
-//TODO: Add @JsonSerializable() class APIRecipe
+//Add @JsonSerializable() class APIRecipe
+@JsonSerializable()
+class APIRecipe {
+  String label;
+  String image;
+  String url;
+  List<APIIngredients> ingredients;
+  double calories;
+  double totalWeight;
+  double totalTime;
+
+  APIRecipe({
+    required this.label,
+    required this.image,
+    required this.url,
+    required this.ingredients,
+    required this.calories,
+    required this.totalWeight,
+    required this.totalTime,
+});
+  factory APIRecipe.fromJson(Map<String, dynamic> json) => _$APIRecipeFromJson(json);
+  Map<String, dynamic> toJson() => _$APIRecipeToJson(this);
+}
+//Add global helper functions
+String getCalories(double? calories) {
+  if (calories == null) {
+    return 'O KCAL';
+  }
+  return calories.floor().toString() + 'KCAL';
+}
+
+String getWeight(double? weight) {
+  if(weight == null) {
+    return '0g';
+  }
+  return weight.floor().toString() + 'g';
+}
+
 //TODO: Add @JsonSerializable() class APIIngredients
