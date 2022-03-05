@@ -44,7 +44,8 @@ class _MainScreenState extends State<MainScreen> {
     pageList.add(const RecipeList());
     pageList.add(const MyRecipesList());
     pageList.add(const ShoppingList());
-    // TODO: Call getCurrentIndex
+    // Call getCurrentIndex
+    getCurrentIndex();
   }
 
   void _onItemTapped(int index) {
