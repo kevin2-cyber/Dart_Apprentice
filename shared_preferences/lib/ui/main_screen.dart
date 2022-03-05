@@ -52,7 +52,8 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       _selectedIndex = index;
     });
-    // TODO: Call saveCurrentIndex
+    // Call saveCurrentIndex
+    saveCurrentIndex();
   }
 
   @override
