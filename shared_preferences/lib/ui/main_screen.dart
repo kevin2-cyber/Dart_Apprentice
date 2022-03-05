@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'myrecipes/my_recipes_list.dart';
 import 'recipes/recipe_list.dart';
@@ -17,7 +18,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   List<Widget> pageList = <Widget>[];
-  // TODO: Add index key
+  // Add index key
+  static const String prefSelectedIndexKey = 'selectedIndex';
 
   @override
   void initState() {
