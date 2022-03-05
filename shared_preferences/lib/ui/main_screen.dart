@@ -21,6 +21,11 @@ class _MainScreenState extends State<MainScreen> {
   // Add index key
   static const String prefSelectedIndexKey = 'selectedIndex';
 
+  void saveCurrentIndex() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt(prefSelectedIndexKey, _selectedIndex);
+  }
+
   @override
   void initState() {
     super.initState();
