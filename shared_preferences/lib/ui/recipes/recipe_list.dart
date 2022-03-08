@@ -213,11 +213,12 @@ class _RecipeListState extends State<RecipeList> {
     });
   }
 
-  // TODO: Replace method
+  // Replace method
   Widget _buildRecipeLoader(BuildContext context) {
     if (_currentRecipes1 == null || _currentRecipes1?.hits == null) {
       return Container();
     }
+    // Show a loading indicator whilst waiting for the recipes
     return Center(
       child: _buildRecipeCard(context, _currentRecipes1!.hits, 0),
     );
