@@ -1,6 +1,6 @@
 # shared_preferences
 
-A new Flutter project.
+A new Flutter project to help understand the use of build_runner and SharedPreferences 
 
 ## Getting Started
 
