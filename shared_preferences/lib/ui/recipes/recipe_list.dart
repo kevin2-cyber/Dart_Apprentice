@@ -11,6 +11,7 @@ import '../recipe_card.dart';
 import 'recipe_details.dart';
 import '../widgets/custom_dropdown.dart';
 import '../colors.dart';
+import '../../network/recipe_service.dart';
 
 class RecipeList extends StatefulWidget {
   const RecipeList({Key? key}) : super(key: key);
@@ -24,7 +25,10 @@ class _RecipeListState extends State<RecipeList> {
   static const String prefSearchKey = 'previousSearches';
   late TextEditingController searchTextController;
   final ScrollController _scrollController = ScrollController();
-  List currentSearchList = [];
+
+
+  // Replaced with new API class
+  List<APIHits> currentSearchList = [];
   int currentCount = 0;
   int currentStartPosition = 0;
   int currentEndPosition = 20;
@@ -46,6 +50,7 @@ class _RecipeListState extends State<RecipeList> {
     // Call getPreviousSearches
     getPreviousSearches();
     // Call loadRecipes()
+    // TODO: Remove call to loadRecipes()
     loadRecipes();
     searchTextController = TextEditingController(text: '');
     _scrollController
@@ -69,7 +74,17 @@ class _RecipeListState extends State<RecipeList> {
     });
   }
 
-  // Add loadRecipes
+
+  // Add getRecipeData()
+  Future<APIRecipeQuery> getRecipeData(String query, int from, int to) async {
+    final recipeJson = await RecipeService().getRecipes(query, from, to);
+    final recipeMap = json.decode(recipeJson);
+    return APIRecipeQuery.fromJson(recipeMap);
+  }
+
+
+  // TODO: Delete loadRecipes()
+  // Add loadRecipes()
   Future loadRecipes() async {
     final jsonString = await rootBundle.loadString('assets/recipes1.json');
     setState(() {
@@ -213,8 +228,8 @@ class _RecipeListState extends State<RecipeList> {
     });
   }
 
-  // Replace method
-  Widget _buildRecipeLoader(BuildContext context) {
+// TODO: Replace this _buildRecipeLoader definition
+ Widget _buildRecipeLoader(BuildContext context) {
     if (_currentRecipes1 == null || _currentRecipes1?.hits == null) {
       return Container();
     }
@@ -223,6 +238,8 @@ class _RecipeListState extends State<RecipeList> {
       child: _buildRecipeCard(context, _currentRecipes1!.hits, 0),
     );
   }
+
+  // TODO: Add _buildRecipeList()
 
 // Add _buildRecipeCard
   Widget _buildRecipeCard(BuildContext topLevelContext, List<APIHits> hits,
@@ -238,6 +255,9 @@ class _RecipeListState extends State<RecipeList> {
           ),
         );
       },
+      // Replace with recipeCard
+      child: recipeCard(recipe),
     );
   }
 }
+
