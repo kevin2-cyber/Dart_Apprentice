@@ -5,7 +5,7 @@ const String apiID = 'a40e958e';
 const String apiURL = 'https://api.edamam.com/seach';
 
 class RecipeService {
-  Future getData(String url) async{
+  Future getData(String url) async {
     print('Calling url: $url');
     final response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
@@ -14,5 +14,12 @@ class RecipeService {
       print(response.statusCode);
     }
   }
-  //TODO: Add getRecipes
+
+  // Add getRecipes
+  Future<dynamic> getRecipes(String query, int from, int to) async {
+    final recipeData = await getData(
+        '$apiURL? app_ID = $apiID&app_key=$apiKey&q=$query&from=$from&to=$to'
+    );
+    return recipeData;
+  }
 }
