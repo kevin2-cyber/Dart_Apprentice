@@ -19,7 +19,9 @@ Widget recipeCard(APIRecipe recipe) {
                 // Replace with image from recipe
                 imageUrl: recipe.image,
                 height: 210,
-                fit: BoxFit.fill)),
+                fit: BoxFit.fill
+            ),
+        ),
         const SizedBox(
           height: 12.0,
         ),
