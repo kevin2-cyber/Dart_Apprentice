@@ -2,6 +2,7 @@ import 'dart:js';
 import 'dart:math';
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //Add imports
 import 'package:shared_preferences/shared_preferences.dart';
@@ -239,7 +240,25 @@ class _RecipeListState extends State<RecipeList> {
     );
   }
 
-  // TODO: Add _buildRecipeList()
+  // Add _buildRecipeList()
+  Widget _buildRecipeList(BuildContext recipeListContext, List<APIHits> hits) {
+    final size = MediaQuery.of(context).size;
+    const itemHeight = 310;
+    final itemWidth = size.width / 2;
+    return Flexible(
+      child: GridView.builder(
+        controller: _scrollController,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: (itemWidth / itemHeight),
+          ),
+          itemCount: hits.length,
+          itemBuilder: (BuildContext context, int index) {
+          return _buildRecipeCard(recipeListContext, hits, index);
+          },
+      ),
+    );
+  }
 
 // Add _buildRecipeCard
   Widget _buildRecipeCard(BuildContext topLevelContext, List<APIHits> hits,
