@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 //Add imports
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import '../../network/recipe_model.dart';
 import '../recipe_card.dart';
 import 'recipe_details.dart';
@@ -39,9 +39,6 @@ class _RecipeListState extends State<RecipeList> {
   // Add searches array
   List<String> previousSearches = <String>[];
 
-  // Add _currentRecipes1
-  APIRecipeQuery? _currentRecipes1 = null;
-
 
   @override
   void initState() {
@@ -49,8 +46,6 @@ class _RecipeListState extends State<RecipeList> {
     // Call getPreviousSearches
     getPreviousSearches();
     // Call loadRecipes()
-    // TODO: Remove call to loadRecipes()
-    loadRecipes();
     searchTextController = TextEditingController(text: '');
     _scrollController
         .addListener(() {
@@ -79,16 +74,6 @@ class _RecipeListState extends State<RecipeList> {
     final recipeJson = await RecipeService().getRecipes(query, from, to);
     final recipeMap = json.decode(recipeJson);
     return APIRecipeQuery.fromJson(recipeMap);
-  }
-
-
-  // TODO: Delete loadRecipes()
-  // Add loadRecipes()
-  Future loadRecipes() async {
-    final jsonString = await rootBundle.loadString('assets/recipes1.json');
-    setState(() {
-      _currentRecipes1 = APIRecipeQuery.fromJson(jsonDecode(jsonString));
-    });
   }
 
   @override
@@ -227,14 +212,51 @@ class _RecipeListState extends State<RecipeList> {
     });
   }
 
-// TODO: Replace this _buildRecipeLoader definition
+// Replace this _buildRecipeLoader definition
  Widget _buildRecipeLoader(BuildContext context) {
-    if (_currentRecipes1 == null || _currentRecipes1?.hits == null) {
+    if (searchTextController.text.length < 3) {
       return Container();
     }
     // Show a loading indicator whilst waiting for the recipes
-    return Center(
-      child: _buildRecipeCard(context, _currentRecipes1!.hits, 0),
+    return FutureBuilder<APIRecipeQuery>(
+      future: getRecipeData(searchTextController.text.trim(), currentStartPosition, currentEndPosition),
+      builder: (context, snapshot) {
+        if(snapshot.connectionState == ConnectionState.done) {
+          if(snapshot.hasError) {
+            return Center(
+              child: Text(
+                snapshot.error.toString(),
+                textAlign: TextAlign.center,
+                textScaleFactor: 1.3,
+              ),
+            );
+          }
+          loading = false;
+          final query = snapshot.data;
+          inErrorState = false;
+          if(query != null) {
+            currentCount = query.counts;
+            hasMore = query.more;
+            currentSearchList.addAll(query.hits);
+            if(query.to < currentEndPosition) {
+              currentEndPosition = query.to;
+            }
+          }
+          return _buildRecipeList(context, currentSearchList);
+        }
+        // Handle not done connection
+       else {
+         if(currentCount == 0) {
+           // Show a loading indicator while waiting for the recipes
+           return const Center(
+             child: CircularProgressIndicator(),
+           );
+         }
+         else {
+           return _buildRecipeList(context, currentSearchList);
+         }
+        }
+      },
     );
   }
 
