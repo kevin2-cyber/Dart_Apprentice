@@ -73,11 +73,24 @@ final List coffeeType = [
           // Find the best coffee for you
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Text(
-                'Find the best coffee for you',
-              style: GoogleFonts.bebasNeue(
-                fontSize: 40,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Find the best',
+                  style: GoogleFonts.poppins(
+                    fontSize: 38.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  'coffee for you',
+                  style: GoogleFonts.poppins(
+                    fontSize: 38.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
             ),
           ),
 
@@ -147,6 +160,13 @@ final List coffeeType = [
                 ),
               ],
             ),
+          ),
+          const SizedBox(
+            height: 40.0,
+          ),
+          Text(
+              'Special for you',
+            style: GoogleFonts.poppins(),
           ),
         ],
       ),
