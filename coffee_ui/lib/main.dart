@@ -10,8 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Coffee App UI',
       theme: ThemeData(
         brightness: Brightness.dark,
+        primarySwatch: Colors.orange,
       ),
       home: const HomePage(),
     );
