@@ -1,4 +1,5 @@
 import 'package:coffee_ui/utils/coffee_tile.dart';
+import 'package:coffee_ui/utils/coffee_type.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +11,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  // list of coffee types
+final List coffeeType = [
+  // [coffeeType, isSelected]
+  ['Cappuccino', true],
+  ['Latte', false],
+  ['Black', false],
+  ['Tea', false],
+];
+
+  // user tapped on coffee types
+  void coffeeTypeSelected(int index) {
+    setState(() {
+
+      // this for loop makes every selection false
+      for (int i = 0; i < coffeeType.length; i++) {
+        coffeeType[i][1] = false;
+      }
+      coffeeType[index][1] = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,10 +40,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: Icon(Icons.menu),
-        actions: [
+        leading: const Icon(Icons.menu),
+        actions: const [
           Padding(
-            padding: const EdgeInsets.only(right: 20.0),
+            padding: EdgeInsets.only(right: 20.0),
             child: Icon(Icons.person),
           ),
         ],
@@ -53,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             child: Text(
                 'Find the best coffee for you',
               style: GoogleFonts.bebasNeue(
-                fontSize: 56,
+                fontSize: 40,
               ),
             ),
           ),
@@ -66,7 +89,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 hintText: 'Find your coffee....',
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -81,19 +104,47 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-
-          // horizontal listView of coffee tiles
           const SizedBox(
             height: 25.0,
           ),
+          // horizontal listView of coffee types
+          SizedBox(
+            height: 50,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: coffeeType.length,
+              itemBuilder: (context, index) {
+                return CoffeeType(
+                  coffeeType: coffeeType[index][0],
+                  isSelected: coffeeType[index][1],
+                  onTap: (){
+                    coffeeTypeSelected(index);
+                  },
+                );
+              },
+            ),
+          ),
+
+          // horizontal listView of coffee tiles
           Expanded(
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [
-                CoffeeTile(),
-                CoffeeTile(),
-                CoffeeTile(),
-                CoffeeTile(),
+              children: const [
+                CoffeeTile(
+                  coffeePrice: '4.20',
+                  coffeeImagePath: 'assets/images/latte.jpg',
+                  coffeeName: 'Latte',
+                ),
+                CoffeeTile(
+                  coffeePrice: '4.10',
+                  coffeeImagePath: 'assets/images/cappucino.jpg',
+                  coffeeName: 'Cappuccino',
+                ),
+                CoffeeTile(
+                  coffeePrice: '4.60',
+                  coffeeImagePath: 'assets/images/milk.jpg',
+                  coffeeName: 'Milk Coffee Thing',
+                ),
               ],
             ),
           ),
