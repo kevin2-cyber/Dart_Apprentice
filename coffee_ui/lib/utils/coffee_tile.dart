@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeTile extends StatelessWidget {
   final String coffeeImagePath;
@@ -41,8 +42,10 @@ class CoffeeTile extends StatelessWidget {
                 children: [
                   Text(
                     coffeeName,
-                    style: const TextStyle(
-                      fontSize: 20.0,
+                    style: GoogleFonts.bebasNeue(
+                      textStyle: const TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -50,7 +53,11 @@ class CoffeeTile extends StatelessWidget {
                   ),
                   Text(
                     'With Almond Milk',
-                    style: TextStyle(color: Colors.grey[700]),
+                    style: GoogleFonts.bebasNeue(
+                        textStyle: TextStyle(
+                            color: Colors.grey[700],
+                        ),
+                    ),
                   ),
                   // price
                   const SizedBox(
@@ -61,7 +68,10 @@ class CoffeeTile extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('\$$coffeePrice'),
+                        Text(
+                            '\$$coffeePrice',
+                          style: GoogleFonts.bebasNeue(),
+                        ),
                         Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(

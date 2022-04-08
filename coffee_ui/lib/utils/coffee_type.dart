@@ -9,8 +9,8 @@ class CoffeeType extends StatelessWidget {
     Key? key,
     required this.coffeeType,
     required this.isSelected,
-    required this.onTap}
-      ) : super(key: key);
+    required this.onTap
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
