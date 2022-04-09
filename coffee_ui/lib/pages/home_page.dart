@@ -55,6 +55,10 @@ final List coffeeType = [
             label: '',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: '',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: '',
           ),
@@ -62,10 +66,6 @@ final List coffeeType = [
             icon: Icon(Icons.notifications),
             label: '',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.home_filled),
-          //   label: '',
-          // ),
         ],
       ),
       body: Column(
