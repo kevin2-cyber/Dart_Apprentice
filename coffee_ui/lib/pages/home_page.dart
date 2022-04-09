@@ -74,10 +74,10 @@ final List coffeeType = [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   'Find the best',
+                  textAlign: TextAlign.left,
                   style: GoogleFonts.poppins(
                     fontSize: 38.0,
                     fontWeight: FontWeight.w700,
@@ -85,6 +85,7 @@ final List coffeeType = [
                 ),
                 Text(
                   'coffee for you',
+                  textAlign: TextAlign.left,
                   style: GoogleFonts.poppins(
                     fontSize: 38.0,
                     fontWeight: FontWeight.w700,
@@ -147,16 +148,19 @@ final List coffeeType = [
                   coffeePrice: '4.20',
                   coffeeImagePath: 'assets/images/latte.jpg',
                   coffeeName: 'Latte',
+                  coffeeAdditive: 'With Almond Milk',
                 ),
                 CoffeeTile(
                   coffeePrice: '4.10',
                   coffeeImagePath: 'assets/images/cappucino.jpg',
                   coffeeName: 'Cappuccino',
+                  coffeeAdditive: 'With Oat Milk',
                 ),
                 CoffeeTile(
                   coffeePrice: '4.60',
                   coffeeImagePath: 'assets/images/milk.jpg',
                   coffeeName: 'Milk Coffee Thing',
+                  coffeeAdditive: 'With Cappuccino',
                 ),
               ],
             ),

@@ -5,12 +5,14 @@ class CoffeeTile extends StatelessWidget {
   final String coffeeImagePath;
   final String coffeeName;
   final String coffeePrice;
+  final String coffeeAdditive;
 
   const CoffeeTile({
     Key? key,
     required this.coffeeImagePath,
     required this.coffeeName,
-    required this.coffeePrice
+    required this.coffeePrice,
+    required this.coffeeAdditive
   }) : super(key: key);
 
   @override
@@ -52,7 +54,7 @@ class CoffeeTile extends StatelessWidget {
                     height: 4,
                   ),
                   Text(
-                    'With Almond Milk',
+                    coffeeAdditive,
                     style: GoogleFonts.bebasNeue(
                         textStyle: TextStyle(
                             color: Colors.grey[700],
