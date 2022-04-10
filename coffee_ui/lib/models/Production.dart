@@ -1,1 +1,1 @@
-class Production {}
+class Product {}
