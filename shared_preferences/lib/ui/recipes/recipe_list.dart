@@ -1,16 +1,14 @@
 import 'dart:math';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-//Add imports
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:flutter/services.dart';
 import '../../network/recipe_model.dart';
 import '../recipe_card.dart';
 import 'recipe_details.dart';
 import '../widgets/custom_dropdown.dart';
 import '../colors.dart';
 import '../../network/recipe_service.dart';
+import 'package:chopper/chopper.dart';
+import '../../network/model_response.dart';
 
 class RecipeList extends StatefulWidget {
   const RecipeList({Key? key}) : super(key: key);
@@ -66,14 +64,6 @@ class _RecipeListState extends State<RecipeList> {
         }
       }
     });
-  }
-
-
-  // Add getRecipeData()
-  Future<APIRecipeQuery> getRecipeData(String query, int from, int to) async {
-    final recipeJson = await RecipeService().getRecipes(query, from, to);
-    final recipeMap = json.decode(recipeJson);
-    return APIRecipeQuery.fromJson(recipeMap);
   }
 
   @override
@@ -218,8 +208,12 @@ class _RecipeListState extends State<RecipeList> {
       return Container();
     }
     // Show a loading indicator whilst waiting for the recipes
-    return FutureBuilder<APIRecipeQuery>(
-      future: getRecipeData(searchTextController.text.trim(), currentStartPosition, currentEndPosition),
+    return FutureBuilder<Response<Result<APIRecipeQuery>>>(
+      future: RecipeService.create().queryRecipes(
+          searchTextController.text.trim(),
+          currentStartPosition,
+          currentEndPosition
+      ),
       builder: (context, snapshot) {
         if(snapshot.connectionState == ConnectionState.done) {
           if(snapshot.hasError) {
@@ -232,7 +226,13 @@ class _RecipeListState extends State<RecipeList> {
             );
           }
           loading = false;
-          final query = snapshot.data;
+          final result = snapshot.data?.body;
+          if (result is Error) {
+            // Hit an error
+            inErrorState = true;
+            return _buildRecipeList(context, currentSearchList);
+          }
+          final query = (result as Success).value;
           inErrorState = false;
           if(query != null) {
             currentCount = query.counts;
