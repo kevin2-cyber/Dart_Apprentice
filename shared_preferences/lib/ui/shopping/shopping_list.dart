@@ -10,17 +10,18 @@ class ShoppingList extends StatefulWidget {
 
 class _ShoppingListState extends State<ShoppingList> {
   final checkBoxValues = <int, bool>{};
+  // TODO: Remove ingredients declaration
   static const ingredients = <String>[];
 
   @override
   Widget build(BuildContext context) {
-    // TODO 2
+    // TODO: Add Consumer widget
     return ListView.builder(
         itemCount: ingredients.length,
         itemBuilder: (BuildContext context, int index) {
           return CheckboxListTile(
             value: checkBoxValues.containsKey(index) && checkBoxValues[index]!,
-            // TODO 3
+            // TODO: Update title to include name
             title: Text(ingredients[index]),
             onChanged: (newValue) {
               if (newValue != null) {
@@ -31,6 +32,6 @@ class _ShoppingListState extends State<ShoppingList> {
             },
           );
         });
-    // TODO 4
+    // TODO: Add closing brace and parenthesis
   }
 }

@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomDropdownMenuItem<T> extends PopupMenuEntry<T> {
-  const CustomDropdownMenuItem(
-      {Key? key, required this.value, required this.text, this.callback})
+  const CustomDropdownMenuItem({
+        Key? key,
+    required this.value,
+    required this.text,
+    this.callback
+  })
       : super(key: key);
 
   final T value;
