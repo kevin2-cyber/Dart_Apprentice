@@ -1,6 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
+
+import '../../data/models/models.dart';
+import '../../data/memory_repository.dart';
 
 class MyRecipesList extends StatefulWidget {
   const MyRecipesList({Key? key}) : super(key: key);
@@ -10,15 +15,11 @@ class MyRecipesList extends StatefulWidget {
 }
 
 class _MyRecipesListState extends State<MyRecipesList> {
-  // TODO: Update recipes declaration
-  List<String> recipes = [];
+  // Update recipes declaration
+  List<Recipe> recipes = [];
 
-  // TODO: Remove initState()
-  @override
-  void initState() {
-    super.initState();
-    recipes = <String>[];
-  }
+  // Remove initState()
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,5 +87,18 @@ class _MyRecipesListState extends State<MyRecipesList> {
         });
     // TODO: Add final brace and parenthesis
   }
-// TODO: Add deleteRecipe() here
+// Add deleteRecipe() here
+  void deleteRecipe(MemoryRepository repository, Recipe recipe) async {
+    if (recipe.id !=  null) {
+      repository.deleteRecipeIngredients(recipe.id!);
+      repository.deleteRecipe(recipe);
+      setState(() {
+
+      });
+    } else {
+      if (kDebugMode) {
+        print('Recipe id is null');
+      }
+    }
+  }
 }
