@@ -27,8 +27,8 @@ class _ShoppingListState extends State<ShoppingList> {
               return CheckboxListTile(
                 value: checkBoxValues.containsKey(index) &&
                     checkBoxValues[index]!,
-                // TODO: Update title to include name
-                title: Text(ingredients[index]),
+                // Update title to include name
+                title: Text(ingredients[index].name ?? ''),
                 onChanged: (newValue) {
                   if (newValue != null) {
                     setState(() {
