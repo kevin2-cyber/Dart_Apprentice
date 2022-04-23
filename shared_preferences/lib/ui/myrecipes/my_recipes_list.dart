@@ -59,7 +59,7 @@ class _MyRecipesListState extends State<MyRecipesList> {
                         leading: CachedNetworkImage(
                           // Replace imageUrl hardcoding
                             imageUrl:
-                                'http://www.seriouseats.com/recipes/2011/12/chicken-vesuvio-recipe.html',
+                                recipe.image ?? '',
                             height: 120,
                             width: 60,
                             fit: BoxFit.cover),
