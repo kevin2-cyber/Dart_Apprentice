@@ -30,15 +30,11 @@ class _MyRecipesListState extends State<MyRecipesList> {
   }
 
   Widget _buildRecipeList(BuildContext context) {
-// Add Consumer
-      return Consumer<MemoryRepository>(
-        builder: (context, value, child) {
-          recipes = repository.findAllRecipes();
-        },
-        child: ListView.builder(
+    return Consumer<MemoryRepository>(builder: (context, repository, child) {
+      recipes = repository.findAllRecipes();
+      return ListView.builder(
           itemCount: recipes.length,
           itemBuilder: (BuildContext context, int index) {
-            // Add recipe definition
             final recipe = recipes[index];
             return SizedBox(
               height: 100,
@@ -57,14 +53,11 @@ class _MyRecipesListState extends State<MyRecipesList> {
                       padding: const EdgeInsets.all(8.0),
                       child: ListTile(
                         leading: CachedNetworkImage(
-                          // Replace imageUrl hardcoding
-                            imageUrl:
-                                recipe.image ?? '',
+                            imageUrl: recipe.image ?? '',
                             height: 120,
                             width: 60,
                             fit: BoxFit.cover),
-                        // TODO: Replace title hardcoding
-                        title: const Text('Chicken Vesuvio'),
+                        title: Text(recipe.label ?? ''),
                       ),
                     ),
                   ),
@@ -75,8 +68,7 @@ class _MyRecipesListState extends State<MyRecipesList> {
                       color: Colors.transparent,
                       foregroundColor: Colors.black,
                       iconWidget: const Icon(Icons.delete, color: Colors.red),
-                      // TODO: Update first onTap
-                      onTap: () {})
+                      onTap: () => deleteRecipe(repository, recipe)),
                 ],
                 secondaryActions: <Widget>[
                   IconSlideAction(
@@ -84,27 +76,24 @@ class _MyRecipesListState extends State<MyRecipesList> {
                       color: Colors.transparent,
                       foregroundColor: Colors.black,
                       iconWidget: const Icon(Icons.delete, color: Colors.red),
-                      // TODO: Update second onTap
-                      onTap: () {})
+                      onTap: () => deleteRecipe(repository, recipe)),
                 ],
               ),
             );
-          }),
-      );
-    // TODO: Add final brace and parenthesis
+          });
+    });
   }
+
 // Add deleteRecipe() here
   void deleteRecipe(MemoryRepository repository, Recipe recipe) async {
     if (recipe.id !=  null) {
       repository.deleteRecipeIngredients(recipe.id!);
       repository.deleteRecipe(recipe);
-      setState(() {
-
-      });
+      setState(() {});
     } else {
       if (kDebugMode) {
         print('Recipe id is null');
       }
     }
   }
-}
+
