@@ -1,15 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../colors.dart';
+import '../../network/recipe_model.dart';
+import '../../data/models/models.dart';
+import '../../data/memory_repository.dart';
 
 class RecipeDetails extends StatelessWidget {
-  // TODO: Replace with new constructor
-  const RecipeDetails({Key? key}) : super(key: key);
+  // Replace with new constructor
+  final Recipe recipe;
+  const RecipeDetails({Key? key, required this.recipe}) :
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final repository = Provider.of<MemoryRepository>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -24,9 +31,9 @@ class RecipeDetails extends StatelessWidget {
                     Align(
                       alignment: Alignment.topLeft,
                       child: CachedNetworkImage(
-                        // TODO: Replace imageUrl
+                        // Replace imageUrl
                         imageUrl:
-                            'https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg',
+                            recipe.image ?? '',
                         alignment: Alignment.topLeft,
                         fit: BoxFit.fill,
                         width: size.width,
@@ -47,22 +54,27 @@ class RecipeDetails extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
                   child: Text(
-                    // TODO: Replace hardcoded Chicken Vesuvio
-                    'Chicken Vesuvio',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    // Replace hardcoded Chicken Vesuvio
+                    recipe.label ?? '',
+                    style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                const Padding(
-                    padding: EdgeInsets.only(left: 16.0),
+                Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
                     child: Chip(
-                      // TODO: Replace hardcoded calories
-                      label: Text('16CAL'),
+                      // Replace hardcoded calories
+                      label: Text(
+                        getCalories(recipe.calories),
+                      ),
                     )),
                 const SizedBox(
                   height: 16,
@@ -75,7 +87,8 @@ class RecipeDetails extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16.0)),
                     ),
                     onPressed: () {
-                      // TODO: Add insertRecipe here
+                      // Add insertRecipe here
+                      repository.insertRecipe(recipe);
                       Navigator.pop(context);
                     },
                     icon: SvgPicture.asset(
