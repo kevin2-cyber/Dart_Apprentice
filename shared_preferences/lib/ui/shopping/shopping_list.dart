@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../data/memory_repository.dart';
 
 class ShoppingList extends StatefulWidget {
   const ShoppingList({Key? key}) : super(key: key);
@@ -10,8 +13,7 @@ class ShoppingList extends StatefulWidget {
 
 class _ShoppingListState extends State<ShoppingList> {
   final checkBoxValues = <int, bool>{};
-  // TODO: Remove ingredients declaration
-  static const ingredients = <String>[];
+  // Remove ingredients declaration
 
   @override
   Widget build(BuildContext context) {
