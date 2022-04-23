@@ -40,6 +40,6 @@ class _ShoppingListState extends State<ShoppingList> {
             });
       }
     );
-    // TODO: Add closing brace and parenthesis
+    // Add closing brace and parenthesis
   }
 }
