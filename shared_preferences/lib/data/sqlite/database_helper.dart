@@ -105,8 +105,8 @@ class DatabaseHelper {
     final recipes = parseRecipes(recipeList);
     return recipes;
   }
-
-}// Add watchAllRecipes() here
+}
+// Add watchAllRecipes() here
   Stream<List<Recipe>> watchAllRecipes() async* {
   final db = await instance.streamDatabase;
   yield* db.createQuery(recipeTable).mapToList((row) => Recipe.fromJson(row));
