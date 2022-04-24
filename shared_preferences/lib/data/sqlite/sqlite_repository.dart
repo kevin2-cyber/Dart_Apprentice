@@ -32,5 +32,5 @@ class SqliteRepository extends Repository {
   Future<List<Ingredient>> findRecipeIngredients(int id) {
     return dbHelper.findRecipeIngredients(id);
   }
-  // TODO: Add recipe insert here
+  // Add recipe insert here
 }
