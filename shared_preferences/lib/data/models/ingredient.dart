@@ -12,5 +12,12 @@ class Ingredient extends Equatable {
   // TODO: implement props
   List<Object?> get props => [recipeId, name, weight];
 
+  // Create a Ingredient from JSON data
+  factory Ingredient.fromJson(Map<String, dynamic> json) => Ingredient(
+    id: json['ingredientId'],
+    recipeId: json['recipeId'],
+    name: json['name'],
+    weight: json['weight'],
+  );
 
 }
