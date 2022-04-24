@@ -48,5 +48,31 @@ class SqliteRepository extends Repository {
       return id;
     });
   }
+
   //  Insert ingredients
+  @override
+  Future<List<int>> insertIngredients(List<Ingredient>
+  ingredients) {
+    return Future(() async {
+      if (ingredients.length != 0) {
+        // 1
+        final ingredientIds = <int>[];
+        // 2
+        await Future.forEach(ingredients, (Ingredient ingredient)
+        async {
+          // 3
+          final futureId = await
+          dbHelper.insertIngredient(ingredient);
+          ingredient.id = futureId;
+          // 4
+          ingredientIds.add(futureId);
+        });
+        // 5
+        return Future.value(ingredientIds);
+      } else {
+        return Future.value(<int>[]);
+      }
+    });
+  }
+  //  Delete methods go here
 }
