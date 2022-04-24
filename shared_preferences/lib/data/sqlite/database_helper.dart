@@ -1,5 +1,4 @@
 import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqlbrite/sqlbrite.dart';
 import 'package:synchronized/synchronized.dart';
@@ -73,5 +72,13 @@ class DatabaseHelper {
     await database;
     return _streamDatabase;
   }
-  //TODO: Add parseRecipes here
+  // Add parseRecipes here
+  List<Recipe> parseRecipes(List<Map<String, dynamic>> recipeList) {
+    final recipes = <Recipe>[];
+    recipeList.forEach((recipeMap) {
+      final recipe = Recipe.fromJson(recipeMap);
+      recipes.add(recipe);
+    });
+    return recipes;
+  }
 }
