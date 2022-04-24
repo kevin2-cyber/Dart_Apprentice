@@ -157,3 +157,38 @@ class DatabaseHelper {
   Future<int> insertIngredient(Ingredient ingredient) {
     return insert(ingredientTable, ingredient.toJson());
   }
+
+  // Delete methods go here
+  Future<int> _delete(String table, String columnId, int id) async {
+    final db = await instance.streamDatabase;
+    return db.delete(table, where: '$columnId = ?',whereArgs: [id]);
+  }
+  Future<int> deleteRecipe(Recipe recipe) async {
+    if (recipe.id != null) {
+      return _delete(recipeTable, recipeId, recipe.id!);
+    } else {
+      return Future.value(-1);
+    }
+  }
+  Future<int> deleteIngredient(Ingredient ingredient) async {
+    if (ingredient.id != null) {
+      return _delete(ingredientTable, ingredientId,
+          ingredient.id!);
+    } else {
+      return Future.value(-1);
+    }
+  }
+  Future<void> deleteIngredients(List<Ingredient> ingredients) {
+    ingredients.forEach((ingredient) {
+      if (ingredient.id != null) {
+        _delete(ingredientTable, ingredientId, ingredient.id!);
+      }
+    });
+    return Future.value();
+  }
+  Future<int> deleteRecipeIngredients(int id) async {
+    final db = await instance.streamDatabase;
+    return db
+        .delete(ingredientTable, where: '$recipeId = ?',
+        whereArgs: [id]);
+  }
