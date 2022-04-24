@@ -32,5 +32,21 @@ class SqliteRepository extends Repository {
   Future<List<Ingredient>> findRecipeIngredients(int id) {
     return dbHelper.findRecipeIngredients(id);
   }
+
   // Add recipe insert here
+  @override
+  Future<int> insertRecipe(Recipe recipe) {
+    return Future(() async {
+      final id = await dbHelper.insertRecipe(recipe);
+      recipe.id = id;
+      if (recipe.ingredients != null) {
+        recipe.ingredients!.forEach((ingredient) {
+          ingredient.recipeId = id;
+        });
+        insertIngredients(recipe.ingredients!);
+      }
+      return id;
+    });
+  }
+  //  Insert ingredients
 }
