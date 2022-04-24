@@ -121,3 +121,11 @@ class DatabaseHelper {
       .createQuery(ingredientTable)
       .mapToList((row) => Ingredient.fromJson(row));
   }
+
+  // Add findRecipeByID() here
+  Future<Recipe> findRecipeById(int id) async {
+  final db = await instance.streamDatabase;
+  final recipeList = await db.query(recipeTable,where: 'id = $id');
+  final recipes = parseRecipes(recipeList);
+  return recipes.first;
+  }
