@@ -74,5 +74,35 @@ class SqliteRepository extends Repository {
       }
     });
   }
+
   //  Delete methods go here
+  @override
+  Future<void> deleteRecipe(Recipe recipe) {
+    // 1
+    dbHelper.deleteRecipe(recipe);
+    // 2
+    if (recipe.id != null) {
+      deleteRecipeIngredients(recipe.id!);
+    }
+    return Future.value();
+  }
+  @override
+  Future<void> deleteIngredient(Ingredient ingredient) {
+    dbHelper.deleteIngredient(ingredient);
+    // 3
+    return Future.value();
+  }
+  @override
+  Future<void> deleteIngredients(List<Ingredient> ingredients) {
+    // 4
+    dbHelper.deleteIngredients(ingredients);
+    return Future.value();
+  }
+  @override
+  Future<void> deleteRecipeIngredients(int recipeId) {
+    // 5
+    dbHelper.deleteRecipeIngredients(recipeId);
+    return Future.value();
+  }
+  // TODO: initialize and close methods go here
 }
