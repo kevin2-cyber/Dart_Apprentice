@@ -98,7 +98,7 @@ class DatabaseHelper {
     return ingredients;
   }
 
-  // Add findAppRecipes here
+  // Add findAllRecipes here
   Future<List<Recipe>> findAllRecipes() async {
     final db = await instance.streamDatabase;
     final recipeList = await db.query(recipeTable);
