@@ -104,5 +104,5 @@ class SqliteRepository extends Repository {
     dbHelper.deleteRecipeIngredients(recipeId);
     return Future.value();
   }
-  // TODO: initialize and close methods go here
+  // initialize and close methods go here
 }
