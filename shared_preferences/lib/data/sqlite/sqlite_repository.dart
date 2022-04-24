@@ -78,9 +78,7 @@ class SqliteRepository extends Repository {
   //  Delete methods go here
   @override
   Future<void> deleteRecipe(Recipe recipe) {
-    // 1
     dbHelper.deleteRecipe(recipe);
-    // 2
     if (recipe.id != null) {
       deleteRecipeIngredients(recipe.id!);
     }
@@ -89,20 +87,27 @@ class SqliteRepository extends Repository {
   @override
   Future<void> deleteIngredient(Ingredient ingredient) {
     dbHelper.deleteIngredient(ingredient);
-    // 3
     return Future.value();
   }
   @override
   Future<void> deleteIngredients(List<Ingredient> ingredients) {
-    // 4
     dbHelper.deleteIngredients(ingredients);
     return Future.value();
   }
   @override
   Future<void> deleteRecipeIngredients(int recipeId) {
-    // 5
     dbHelper.deleteRecipeIngredients(recipeId);
     return Future.value();
   }
+
   // initialize and close methods go here
+  @override
+  Future init() async {
+    await dbHelper.database;
+    return Future.value();
+  }
+  @override
+  void close() {
+    dbHelper.close();
+  }
 }
