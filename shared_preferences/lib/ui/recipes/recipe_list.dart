@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 import '../recipe_card.dart';
 import 'recipe_details.dart';
@@ -11,6 +12,7 @@ import '../../network/recipe_model.dart';
 import '../../network/recipe_service.dart';
 import '../../network/model_response.dart';
 import '../../data/models/models.dart';
+import '../../mock_service/mock_service.dart';
 
 class RecipeList extends StatefulWidget {
   const RecipeList({Key? key}) : super(key: key);
@@ -211,7 +213,7 @@ class _RecipeListState extends State<RecipeList> {
     }
     // Show a loading indicator whilst waiting for the recipes
     return FutureBuilder<Response<Result<APIRecipeQuery>>>(
-      future: RecipeService.create().queryRecipes(
+      future: Provider.of<MockService>(context).queryRecipes(
           searchTextController.text.trim(),
           currentStartPosition,
           currentEndPosition
