@@ -12,13 +12,16 @@ class DatabaseHelper {
   static const recipeId = 'recipeId';
   static const ingredientId = 'ingredientId';
   static late BriteDatabase _streamDatabase;
+
   // make this a singleton class
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance =
   DatabaseHelper._privateConstructor();
   static var lock = Lock();
+
   // only have a single app-wide reference to the database
   static Database? _database;
+
   // Add create database code here
   // SQL code to create the database table
   Future _onCreate(Database db, int version) async {
@@ -46,6 +49,7 @@ class DatabaseHelper {
       '''
     );
   }
+
   // Add code to open database
   // this opens the database (and creates it if it doesn't exist)
   Future<Database> _initDatabase() async {
@@ -55,6 +59,7 @@ class DatabaseHelper {
     Sqflite.setDebugModeOn(true);
     return openDatabase(path, version: _databaseVersion, onCreate: _onCreate);
   }
+
   // Add initialize getter here
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -67,11 +72,13 @@ class DatabaseHelper {
     });
     return _database!;
   }
+
   // Add getter for streamDatabase
   Future<BriteDatabase> get streamDatabase async {
     await database;
     return _streamDatabase;
   }
+
   // Add parseRecipes here
   List<Recipe> parseRecipes(List<Map<String, dynamic>> recipeList) {
     final recipes = <Recipe>[];
@@ -90,5 +97,13 @@ class DatabaseHelper {
     });
     return ingredients;
   }
-  //TODO: Add findAppRecipes here
-}
+
+  // Add findAppRecipes here
+  Future<List<Recipe>> findAllRecipes() async {
+    final db = await instance.streamDatabase;
+    final recipeList = await db.query(recipeTable);
+    final recipes = parseRecipes(recipeList);
+    return recipes;
+  }
+
+}//TODO: Add watchAllRecipes() here
