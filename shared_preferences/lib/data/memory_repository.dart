@@ -14,23 +14,23 @@ class MemoryRepository extends Repository {
 
   // Add find methods
   @override
-  List<Recipe> findAllRecipes() {
-    return _currentRecipes;
+  Future<List<Recipe>> findAllRecipes() {
+    return Future.value(_currentRecipes);
   }
 
   @override
-  Recipe findRecipeById(int id) {
-    return _currentRecipes.firstWhere((recipe) => recipe.id == id);
+  Future<Recipe> findRecipeById(int id) {
+    return Future.value(_currentRecipes.firstWhere((recipe) => recipe.id == id));
   }
 
   @override
-  List<Ingredient> findAllIngredients() {
+  Future<List<Ingredient>> findAllIngredients() {
     // 9
-    return _currentIngredients;
+    return Future.value(_currentIngredients);
   }
 
   @override
-  List<Ingredient> findRecipeIngredients(int recipeId) {
+  Future<List<Ingredient>> findRecipeIngredients(int recipeId) {
     // 10
     final recipe =
     _currentRecipes.firstWhere((recipe) => recipe.id == recipeId);
@@ -38,58 +38,53 @@ class MemoryRepository extends Repository {
     final recipeIngredients = _currentIngredients
         .where((ingredient) => ingredient.recipeId == recipe.id)
         .toList();
-    return recipeIngredients;
+    return Future.value(recipeIngredients);
   }
 
   // Add insert methods
   @override
-  int insertRecipe(Recipe recipe) {
+  Future<int> insertRecipe(Recipe recipe) {
     _currentRecipes.add(recipe);
+    _recipeStreamController.sink.add(_currentRecipes);
     if (recipe.ingredients != null) {
       insertIngredients(recipe.ingredients!);
     }
-    notifyListeners();
-    return 0;
+    return Future.value(0);
   }
 
   @override
-  List<int> insertIngredients(List<Ingredient> ingredients) {
+  Future<List<int>> insertIngredients(List<Ingredient> ingredients) {
     if (ingredients.length != 0) {
       _currentIngredients.addAll(ingredients);
-      notifyListeners();
     }
-    return <int>[];
+    return Future.value(<int>[]);
   }
 
   // Add delete methods
   @override
-  void deleteRecipe(Recipe recipe) {
+  Future<void> deleteRecipe(Recipe recipe) async {
     _currentRecipes.remove(recipe);
     if (recipe.id != null) {
       deleteRecipeIngredients(recipe.id!);
     }
-    notifyListeners();
   }
 
   @override
-  void deleteIngredient(Ingredient ingredient) {
+  Future<void> deleteIngredient(Ingredient ingredient) async {
     _currentIngredients.remove(ingredient);
   }
 
   @override
-  void deleteIngredients(List<Ingredient> ingredients) {
+  Future<void> deleteIngredients(List<Ingredient> ingredients) async {
     _currentIngredients
         .removeWhere((ingredient) =>
         ingredients.contains(ingredient));
-    notifyListeners();
   }
 
   @override
-  void deleteRecipeIngredients(int recipeId) {
+  Future<void> deleteRecipeIngredients(int recipeId) async {
     _currentIngredients
-        .removeWhere((ingredient) => ingredient.recipeId ==
-        recipeId);
-    notifyListeners();
+        .removeWhere((ingredient) => ingredient.recipeId == recipeId);
   }
 
   @override
@@ -112,10 +107,13 @@ class MemoryRepository extends Repository {
 
   @override
   Future init() {
-    return Future.value(null);
+    return Future.value();
   }
 
   @override
-  void close() {}
+  void close() {
+    _recipeStreamController.close();
+    _ingredientStreamController.close();
+  }
 
 }
