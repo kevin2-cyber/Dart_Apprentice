@@ -13,6 +13,16 @@ class MockService {
   late APIRecipeQuery _currentRecipes2;
   Random nextRecipe = Random();
 
-  //TODO: Add create and load methods
+  // Add create and load methods
+  void create() {
+    loadRecipes();
+  }
+
+  void loadRecipes() async {
+    var jsonString = await rootBundle.loadString('assets/recipes1.json');
+    _currentRecipes1 = APIRecipeQuery.fromJson(jsonDecode(jsonString));
+    jsonString = await rootBundle.loadString('assets/recipes2.json');
+    _currentRecipes2 = APIRecipeQuery.fromJson(jsonDecode(jsonString));
+  }
   //TODO: Add query method
 }
