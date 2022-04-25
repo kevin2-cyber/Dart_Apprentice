@@ -97,10 +97,10 @@ apiIngredients) {
   // 1
   final ingredients = <Ingredient>[];
   // 2
-  apiIngredients.forEach((ingredient) {
+  for (var ingredient in apiIngredients) {
     ingredients
         .add(Ingredient(name: ingredient.name, weight:
     ingredient.weight));
-  });
+  }
   return ingredients;
 }

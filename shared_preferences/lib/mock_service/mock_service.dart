@@ -27,6 +27,7 @@ class MockService implements ServiceInterface{
   }
 
   // Add query method
+  @override
   Future<Response<Result<APIRecipeQuery>>> queryRecipes(
       String query, int from, int to) {
     switch (nextRecipe.nextInt(2)) {

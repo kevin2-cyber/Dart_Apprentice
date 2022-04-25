@@ -40,9 +40,9 @@ class SqliteRepository extends Repository {
       final id = await dbHelper.insertRecipe(recipe);
       recipe.id = id;
       if (recipe.ingredients != null) {
-        recipe.ingredients!.forEach((ingredient) {
+        for (var ingredient in recipe.ingredients!) {
           ingredient.recipeId = id;
-        });
+        }
         insertIngredients(recipe.ingredients!);
       }
       return id;
@@ -54,7 +54,7 @@ class SqliteRepository extends Repository {
   Future<List<int>> insertIngredients(List<Ingredient>
   ingredients) {
     return Future(() async {
-      if (ingredients.length != 0) {
+      if (ingredients.isNotEmpty) {
         // 1
         final ingredientIds = <int>[];
         // 2
