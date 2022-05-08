@@ -29,7 +29,7 @@ void _setupLogging() {
 
 class MyApp extends StatelessWidget {
   final Repository? repository;
-   MyApp({Key? key, required this.repository}) : super(key: key);
+   const MyApp({Key? key, required this.repository}) : super(key: key);
 
   // This widget is the root of your application.
   @override
