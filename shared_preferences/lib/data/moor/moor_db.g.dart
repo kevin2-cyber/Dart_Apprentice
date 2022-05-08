@@ -640,3 +640,7 @@ abstract class _$RecipeDatabase extends GeneratedDatabase {
 mixin _$RecipeDaoMixin on DatabaseAccessor<RecipeDatabase> {
   $MoorRecipeTable get moorRecipe => attachedDatabase.moorRecipe;
 }
+
+mixin _$IngredientDaoMixin on DatabaseAccessor<RecipeDatabase> {
+  $MoorIngredientTable get moorIngredient => attachedDatabase.moorIngredient;
+}
