@@ -9,6 +9,7 @@ import '../src/web_view_stack.dart';
 void main() {
   runApp(
     const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: WebViewApp(),
     ),
   );
@@ -36,6 +37,7 @@ class _WebViewAppState extends State<WebViewApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text('Flutter WebView'),
         actions: [
           NavigationControls(controller: controller),
