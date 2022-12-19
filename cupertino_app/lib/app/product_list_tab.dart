@@ -1,3 +1,4 @@
+import 'package:cupertino_app/app/product_row_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
@@ -11,10 +12,29 @@ class ProductListTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AppStateModel>(
       builder: (context, model, child) {
-        return const CustomScrollView(
-          slivers: <Widget>[
-            CupertinoSliverNavigationBar(
+        final products = model.getProducts();
+        return CustomScrollView(
+          semanticChildCount: products.length,
+          slivers:  <Widget>[
+            const CupertinoSliverNavigationBar(
               largeTitle: Text('Cupertino Store'),
+            ),
+            SliverSafeArea(   // BEGINNING OF NEW CONTENT
+              top: false,
+              minimum: const EdgeInsets.only(top: 8),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                    if (index < products.length) {
+                      return ProductRowItem(
+                        product: products[index],
+                        lastItem: index == products.length - 1,
+                      );
+                    }
+                    return null;
+                  },
+                ),
+              ),
             ),
           ],
         );
