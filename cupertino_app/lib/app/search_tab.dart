@@ -16,6 +16,7 @@ class SearchTab extends StatefulWidget {
 }
 
 class _SearchTabState extends State<SearchTab> {
+
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
   String _terms = '';
@@ -52,6 +53,7 @@ class _SearchTabState extends State<SearchTab> {
 
   @override
   Widget build(BuildContext context) {
+
     final model = Provider.of<AppStateModel>(context);
     final results = model.search(_terms);
     return DecoratedBox(
