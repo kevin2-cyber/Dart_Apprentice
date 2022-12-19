@@ -107,13 +107,13 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const <Widget>[
-                Icon(
+              children:  <Widget>[
+                const Icon(
                   CupertinoIcons.clock,
                   color: CupertinoColors.lightBackgroundGray,
                   size: 28,
                 ),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 Text(
                   'Delivery time',
                   style: Styles.deliveryTimeLabel,
