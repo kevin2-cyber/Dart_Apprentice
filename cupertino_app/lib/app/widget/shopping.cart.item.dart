@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
-import '../model/product.dart';
-import '../styles.dart';
+import '../../model/product.dart';
+import '../../styles.dart';
 
 class ShoppingCartItem extends StatelessWidget {
   const ShoppingCartItem({

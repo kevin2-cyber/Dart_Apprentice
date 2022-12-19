@@ -1,6 +1,6 @@
-import 'package:cupertino_app/app/product_list_tab.dart';
-import 'package:cupertino_app/app/search_tab.dart';
-import 'package:cupertino_app/app/shopping_cart_tab.dart';
+import 'package:cupertino_app/app/product.list.tab.dart';
+import 'package:cupertino_app/app/search.tab.dart';
+import 'package:cupertino_app/app/shopping.cart.tab.dart';
 import 'package:flutter/cupertino.dart';
 
 class CupertinoStoreHomePage extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:cupertino_app/model/app_state_model.dart';
+import 'package:cupertino_app/model/app.state.model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 

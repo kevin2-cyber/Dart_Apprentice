@@ -1,9 +1,9 @@
-import 'package:cupertino_app/app/product_row_item.dart';
-import 'package:cupertino_app/app/search_bar.dart';
+import 'package:cupertino_app/app/widget/product.row.item.dart';
+import 'package:cupertino_app/app/widget/search.bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import '../model/app_state_model.dart';
+import '../model/app.state.model.dart';
 import '../styles.dart';
 
 class SearchTab extends StatefulWidget {
