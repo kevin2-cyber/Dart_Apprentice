@@ -7,6 +7,7 @@ double _salesTaxRate = 0.06;
 double _shippingCostPerItem = 7;
 
 class AppStateModel extends foundation.ChangeNotifier {
+
   // All the available products.
   List<Product> _availableProducts = [];
 

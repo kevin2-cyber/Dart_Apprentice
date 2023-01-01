@@ -4,11 +4,12 @@ import 'package:provider/provider.dart';
 
 import 'app/app.dart';
 
-void main() => runApp(
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(
     ChangeNotifierProvider<AppStateModel>(
-      create: (_) => AppStateModel()..loadProducts(),
-        child: const CupertinoStoreApp()
-    ),
-);
-
-
+        create: (_) => AppStateModel()..loadProducts(),
+        child: const CupertinoStoreApp()),
+  );
+}

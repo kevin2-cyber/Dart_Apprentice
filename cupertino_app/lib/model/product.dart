@@ -6,6 +6,7 @@ enum Category {
 }
 
 class Product {
+
   const Product({
     required this.category,
     required this.id,
