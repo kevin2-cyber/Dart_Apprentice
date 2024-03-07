@@ -15,7 +15,7 @@ class DataService {
 
     String api = dotenv.get('API_KEY');
 
-    final queryParameters = {'q':city,'appid':api};
+    final queryParameters = {'q':city,'appid':api, 'units': 'imperial'};
 
     final uri = Uri.https(
       'api.openweathermap.org', 'data/2.5/weather',queryParameters
