@@ -4,14 +4,17 @@
  * Use of this source code is governed by a MIT-style license that can be
  * found in the LICENSE file.
  */
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:weather/weather.dart';
 
 enum AppState { NOT_DOWNLOADED, DOWNLOADING, FINISHED_DOWNLOADING }
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -26,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    ws = new WeatherFactory(key);
+    ws = WeatherFactory(key);
   }
 
   void queryForecast() async {
@@ -68,7 +71,7 @@ class _MyAppState extends State<MyApp> {
           );
         },
         separatorBuilder: (context, index) {
-          return Divider();
+          return const Divider();
         },
       ),
     );
@@ -76,21 +79,21 @@ class _MyAppState extends State<MyApp> {
 
   Widget contentDownloading() {
     return Container(
-      margin: EdgeInsets.all(25),
+      margin: const EdgeInsets.all(25),
       child: Column(children: [
-        Text(
+        const Text(
           'Fetching Weather...',
           style: TextStyle(fontSize: 20),
         ),
         Container(
-            margin: EdgeInsets.only(top: 50),
-            child: Center(child: CircularProgressIndicator(strokeWidth: 10)))
+            margin: const EdgeInsets.only(top: 50),
+            child: const Center(child: CircularProgressIndicator(strokeWidth: 10)))
       ]),
     );
   }
 
   Widget contentNotDownloaded() {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -110,12 +113,16 @@ class _MyAppState extends State<MyApp> {
 
   void _saveLat(String input) {
     lat = double.tryParse(input);
-    print(lat);
+    if (kDebugMode) {
+      print(lat);
+    }
   }
 
   void _saveLon(String input) {
     lon = double.tryParse(input);
-    print(lon);
+    if (kDebugMode) {
+      print(lon);
+    }
   }
 
   Widget _coordinateInputs() {
@@ -123,9 +130,9 @@ class _MyAppState extends State<MyApp> {
       children: <Widget>[
         Expanded(
           child: Container(
-              margin: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(5),
               child: TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'Enter latitude'),
                   keyboardType: TextInputType.number,
                   onChanged: _saveLat,
@@ -133,9 +140,9 @@ class _MyAppState extends State<MyApp> {
         ),
         Expanded(
             child: Container(
-                margin: EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
                 child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Enter longitude'),
                     keyboardType: TextInputType.number,
@@ -150,27 +157,27 @@ class _MyAppState extends State<MyApp> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           child: TextButton(
-            child: Text(
-              'Fetch weather',
-              style: TextStyle(color: Colors.white),
-            ),
             onPressed: queryWeather,
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blue)),
+            child: const Text(
+              'Fetch weather',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ),
         Container(
           margin: EdgeInsets.all(5),
           child: TextButton(
-            child: Text(
-              'Fetch forecast',
-              style: TextStyle(color: Colors.white),
-            ),
             onPressed: queryForecast,
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blue)),
+            child: const Text(
+              'Fetch forecast',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         )
       ],
@@ -180,19 +187,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Weather mob',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Weather Example App'),
+          title: const Text('Weather Example App'),
         ),
         body: Column(
           children: <Widget>[
             _coordinateInputs(),
             _buttons(),
-            Text(
+            const Text(
               'Output:',
               style: TextStyle(fontSize: 20),
             ),
-            Divider(
+            const Divider(
               height: 20.0,
               thickness: 2.0,
             ),
