@@ -8,7 +8,7 @@ import 'models.dart';
 
 class DataService {
 
-  Future<WeatherResponse> getWeather(String city) async{
+  static Future<WeatherResponse> getWeather(String city) async {
     // https://api.openweathermap.org/data/2.5/weather?q=London&appid={API key}
 
     await dotenv.load(fileName: 'assets/.env');
@@ -18,7 +18,7 @@ class DataService {
     final queryParameters = {'q':city,'appid':api, 'units': 'imperial'};
 
     final uri = Uri.https(
-      'api.openweathermap.org', 'data/2.5/weather',queryParameters
+      'api.openweathermap.org', 'data/2.5/weather', queryParameters
     );
     
 
