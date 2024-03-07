@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weathmob/data_service.dart';
@@ -75,7 +76,12 @@ class _WeathMobState extends State<WeathMob> {
     );
   }
 
-  void search() {
-    _dataService.getWeather(_cityTextController.text);
+  void search() async {
+    final response = await _dataService.getWeather(_cityTextController.text);
+    if (kDebugMode) {
+      print(response.name);
+      print(response.temperatureInfo.temperature);
+      print(response.weatherInfo.description);
+    }
   }
 }
