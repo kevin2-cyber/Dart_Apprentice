@@ -1,15 +1,21 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'models.dart';
 
 class DataService {
+
   Future<WeatherResponse> getWeather(String city) async{
     // https://api.openweathermap.org/data/2.5/weather?q=London&appid={API key}
 
-    final queryParameters = {'q':city,'appid':'78566aec1cd18b22bcd7735519ff7167'};
+    await dotenv.load(fileName: 'assets/.env');
+
+    String api = dotenv.get('API_KEY');
+
+    final queryParameters = {'q':city,'appid':api};
 
     final uri = Uri.https(
       'api.openweathermap.org', 'data/2.5/weather',queryParameters

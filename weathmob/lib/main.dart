@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weathmob/data_service.dart';
 
-void main() {
+Future<void> main() async {
   // a better error screen
   ErrorWidget.builder = (FlutterErrorDetails details) => Material(
     color: Colors.greenAccent.shade100,
@@ -67,7 +69,7 @@ class _WeathMobState extends State<WeathMob> {
                     decoration: InputDecoration(),
                   ),
                 ),
-                ElevatedButton(onPressed: search, child: Text('Search'))
+                ElevatedButton(onPressed: search, child: const Text('Search'))
               ],
             ),
           ),
