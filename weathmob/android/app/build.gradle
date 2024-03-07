@@ -51,6 +51,13 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+        configurations {
+        configureEach {
+            resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.10'
+            resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
+        }
+    }
 }
 
 flutter {
