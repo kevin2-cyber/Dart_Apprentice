@@ -38,6 +38,7 @@ dependencies:
   http: ^1.2.1
   geolocator: ^11.0.0
   flutter_dotenv: ^5.1.0
+  chip_list: ^2.4.4+8
 
 dev_dependencies:
   flutter_test:
