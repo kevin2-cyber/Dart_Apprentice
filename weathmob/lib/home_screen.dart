@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathmob/weather_search_delegate.dart';
 
-import 'data_service.dart';
-import 'models.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
