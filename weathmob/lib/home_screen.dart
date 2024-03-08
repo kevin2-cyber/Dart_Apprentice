@@ -48,8 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 if(snapshot.hasData) {
                   return Column(
                     children: [
-                      Image.asset(snapshot.data!.weatherInfo.icon),
+                      Image.network(snapshot.data!.iconUrl, height: 50, width: 50,),
                       Text(snapshot.data!.weatherInfo.description),
+                      Text('${snapshot.data!.temperatureInfo.temperature}°C'),
                     ],
                   );
                 } else if(snapshot.hasError) {

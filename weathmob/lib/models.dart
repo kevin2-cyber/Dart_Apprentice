@@ -4,7 +4,7 @@ class WeatherResponse {
   final WeatherInfo weatherInfo;
 
   String get iconUrl {
-    return  'https://api.openweathermap.org/img/wn/${weatherInfo.icon}@2x.png';
+    return  'https://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png';
   }
 
   WeatherResponse({required this.name, required this.temperatureInfo, required this.weatherInfo});
