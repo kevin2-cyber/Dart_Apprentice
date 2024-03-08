@@ -143,6 +143,14 @@ class _SearchResultsState extends State<SearchResults> {
             ),
           );
         }
+        else if(snapshot.hasError) {
+          return Center(
+            child: Text(
+              'No city found',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          );
+        }
         return const Center(child: CircularProgressIndicator(),);
       },
     );
