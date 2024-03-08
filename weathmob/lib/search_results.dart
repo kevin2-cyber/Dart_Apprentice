@@ -51,7 +51,7 @@ class _SearchResultsState extends State<SearchResults> {
       builder: (context, snapshot) {
         if(snapshot.hasData) {
           return SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 Image.network(snapshot.data!.iconUrl, height: 200, width: 200, fit: BoxFit.fill,),
@@ -71,6 +71,7 @@ class _SearchResultsState extends State<SearchResults> {
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.only(left: 16, bottom: 5),
                   child: Wrap(
                     spacing: 5,
@@ -164,18 +165,21 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.1,
-        width: MediaQuery.of(context).size.width * 0.9,
-        decoration: const BoxDecoration(
-          color: Colors.black12,
-        ),
-        child: const ListTile(
-          title: Text('32°C'),
-          subtitle: Text('Hanoi'),
-          trailing: Icon(Icons.sunny),
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            color: Colors.black12,
+          ),
+          child: const ListTile(
+            title: Text('32°C'),
+            subtitle: Text('Hanoi'),
+            trailing: Icon(Icons.sunny),
+          ),
         ),
       ),
     );

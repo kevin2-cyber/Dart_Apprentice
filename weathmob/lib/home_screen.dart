@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         actions: [
           IconButton(
           onPressed: ()=> showSearch(
