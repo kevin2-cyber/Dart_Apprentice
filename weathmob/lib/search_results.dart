@@ -181,7 +181,10 @@ class LocationCard extends StatelessWidget {
           child: const ListTile(
             title: Text('32°C'),
             subtitle: Text('Hanoi'),
-            trailing: Icon(Icons.sunny),
+            trailing: Padding(
+              padding: EdgeInsets.only(top: 16.0),
+              child: Icon(Icons.sunny, size: 50,),
+            ),
           ),
         ),
       ),
